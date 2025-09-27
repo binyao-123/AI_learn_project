@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Time:2025/2/17 22:49
 # @Author:B.Yale
+import random
+
 import torch
 from IPython import display
 from d2l import torch as d2l
@@ -10,7 +12,7 @@ import matplotlib.pyplot as plt
 matplotlib.use('TkAgg')
 
 '''
-Softmax函数是一种用于多分类问题的线性激活函数，能够将模型的输出转换为概率分布。
+Softmax线性激活函数用于多分类问题，能够将模型的输出转换为概率分布。
 主要特性包括：
 1、将输入的未归一化数值转换映射为一个概率分布，概率总和为1，可以表示各类别的概率。
 2、在训练阶段，Softmax函数与交叉熵损失函数结合使用，指导模型学习正确的概率分布。
@@ -24,7 +26,6 @@ Softmax函数是一种用于多分类问题的线性激活函数，能够将模�
 3、将每一行除以其规范化常数，确保结果的和为 1。
 '''
 
-
 # softmax函数实现
 def softmax(x):
     X_exp = torch.exp(x)
@@ -34,17 +35,17 @@ def softmax(x):
 
 
 '''
-交叉熵（Cross-Entropy）用于度量真实概率和预测概率之间差异，通常与softmax结合用作损失函数。（西瓜书 3.3节）
-交叉熵就个裁判，它的核心目的：模型对正确答案预测的概率越高，损失就越小；概率越低，损失就越大。
+交叉熵（Cross-Entropy）判断真实概率和预测概率之间差异，通常与softmax结合用作损失函数。（西瓜书 3.3节）
+交叉熵是裁判，其核心目的：模型对正确答案预测的概率越高，损失就越小；概率越低，损失就越大。
 通常用 torch.nn.CrossEntropyLoss 方法
 '''
 def cross_entropy(y_hat, y):
-    # 精髓所在
-    return - torch.log(y_hat[range(len(y_hat)), y])
+    # 交叉熵的精髓
+    return - torch.log(y_hat[ range(len(y_hat)), y ])
 
 
 def accuracy(y_hat, y):
-    """计算预测正确的数量"""
+    """统计预测正确的数量"""
     if len(y_hat.shape) > 1 and y_hat.shape[1] > 1:
         y_hat = y_hat.argmax(axis=1)  # 返回指定维度最大值的索引张量
     cmp = y_hat.type(y.dtype) == y
@@ -53,10 +54,10 @@ def accuracy(y_hat, y):
 
 def evaluate_accuracy(net, data_iter):
     """评估单个批次模型的精度"""
-    if isinstance(net, torch.nn.Module):
+    if isinstance(net, torch.nn.Module):    # 检查确保传入的net是一个标准的PyTorch模型
         net.eval()  # 将模型设置为评估模式
     metric = d2l.Accumulator(2)  # 正确预测数、预测总数
-    with torch.no_grad():
+    with torch.no_grad():   # 关闭计算梯度，让评估过程更快
         for X, y in data_iter:
             metric.add(accuracy(net(X), y), y.numel())
     return metric[0] / metric[1]
@@ -129,9 +130,9 @@ class Animator:
 
 
 def train_ch3(net, train_iter, test_iter, loss, num_epochs, updater):
-    """训练模型"""
     animator = Animator(xlabel='epoch', xlim=[1, num_epochs], ylim=[0.3, 0.9],
                         legend=['train loss', 'train acc', 'test acc'])
+    """训练整个模型"""
     for epoch in range(num_epochs):
         train_metrics = train_epoch_ch3(net, train_iter, loss, updater)
         test_acc = evaluate_accuracy(net, test_iter)
@@ -146,10 +147,11 @@ def predict_ch3(net, test_iter, n=6):
     """预测标签"""
     for X, y in test_iter:
         break
-    # 图片第一行真实标签，第二行预测标签
+    # 预测图的第一行（加粗）为真实标签，第二行预测标签
     trues = d2l.get_fashion_mnist_labels(y)
     preds = d2l.get_fashion_mnist_labels(net(X).argmax(axis=1))
-    titles = [true + '\n' + pred for true, pred in zip(trues, preds)]
+    #titles = [true + '\n' + pred for true, pred in zip(trues, preds)]
+    titles = [f'$\\bf{{{true}}}$\n{pred}' for true, pred in zip(trues, preds)]
     d2l.show_images(X[0:n].reshape((n, 28, 28)), 1, n, titles=titles[0:n])
     plt.show()
 

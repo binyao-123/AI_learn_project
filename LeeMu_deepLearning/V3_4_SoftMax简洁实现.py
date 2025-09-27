@@ -28,6 +28,6 @@ loss = nn.CrossEntropyLoss(reduction='none')    # 隐式地实现了 softmax + �
 trainer = torch.optim.SGD(net.parameters(), lr=0.1)
 
 # 训练
-num_epochs = 10
+num_epochs = 5
 train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)
 predict_ch3(net, test_iter)
