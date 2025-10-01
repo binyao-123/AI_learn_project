@@ -21,7 +21,7 @@ b2 = nn.Parameter(torch.zeros(num_outputs, requires_grad=True))
 
 params = [W1, b1, W2, b2]
 
-# relu激活函数，输入中所有小于 0的值置为 0，大于 0的值保持不变
+# relu激活函数：小于 0 则置为 0，大于 0 则不变
 def relu(X):
     a = torch.zeros_like(X)
     return torch.max(X, a)
@@ -29,7 +29,7 @@ def relu(X):
 # 模型
 def net(X):
     X = X.reshape((-1, num_inputs))
-    H = relu(X @ W1 + b1)  # “@”是矩阵乘法
+    H = relu(X @ W1 + b1)
     return H @ W2 + b2
 
 

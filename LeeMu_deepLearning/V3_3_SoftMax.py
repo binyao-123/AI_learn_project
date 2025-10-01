@@ -82,7 +82,16 @@ def train_epoch_ch3(net, train_iter, loss, updater):
             # 使用定制的优化器和损失函数
             l.sum().backward()
             updater(X.shape[0])
-        metric.add(float(l.sum()), accuracy(y_hat, y), y.numel())
+
+        if l.numel() > 1:
+            # 直接对向量求和得到批次总损失(reduction='none' 的情况)
+            batch_loss_sum = l.sum()
+        else:
+            # l 是一个标量 (reduction='mean' 的情况) 乘以批次大小来还原批次总损失
+            batch_loss_sum = l * y.numel()
+
+        metric.add(float(batch_loss_sum), accuracy(y_hat, y), y.numel())
+
     # 返回训练损失和训练精度
     return metric[0] / metric[2], metric[1] / metric[2]
 
@@ -130,7 +139,7 @@ class Animator:
 
 
 def train_ch3(net, train_iter, test_iter, loss, num_epochs, updater):
-    animator = Animator(xlabel='epoch', xlim=[1, num_epochs], ylim=[0.3, 0.9],
+    animator = Animator(xlabel='epoch', xlim=[1, num_epochs],
                         legend=['train loss', 'train acc', 'test acc'])
     """训练整个模型"""
     for epoch in range(num_epochs):

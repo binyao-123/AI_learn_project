@@ -10,10 +10,10 @@ from d2l import torch as d2l
 from V3_3_SoftMax import train_epoch_ch3
 from V3_3_SoftMax import Animator
 
-# 生成数据集
+# 手动生成数据集
 max_degree = 50  # 多项式的最大阶数
 n_train, n_test = 100, 100  # 训练和测试数据集大小
-true_w = np.zeros(max_degree)  # 分配大量的空间
+true_w = np.zeros(max_degree)
 true_w[0:4] = np.array([5, 1.2, -3.4, 5.6])
 
 features = np.random.normal(size=(n_train + n_test, 1))
@@ -64,19 +64,37 @@ def train(train_features, test_features, train_labels, test_labels,
                                      evaluate_loss(net, test_iter, loss)))
     print('weight:', net[0].weight.data.numpy())
 
+# 'normal'   - 正常拟合
+# 'underfit' - 欠拟合
+# 'overfit'  - 过拟合
+scenario = 'normal'
 
-# 情景一、从多项式特征中选择前4个维度（正常训练）
-train(poly_features[:n_train, :4], poly_features[n_train:, :4],
-      labels[:n_train], labels[n_train:])
-plt.show()
+print(f"--- Running scenario: {scenario} ---")
 
-# 情景二、从多项式特征中选择前2个维度（欠拟合）
-# train(poly_features[:n_train, :2], poly_features[n_train:, :2],
-#       labels[:n_train], labels[n_train:])
-# plt.show()
+if scenario == 'normal':
+    # 情景一、正常拟合：使用前4个维度的特征（对应3阶多项式）
+    # 模型的复杂度与数据的真实规律相匹配 [5, 1.2, -3.4, 5.6]
+    print("--- 训练一个正常拟合的模型 ---")
+    train(poly_features[:n_train, :4], poly_features[n_train:, :4],
+          labels[:n_train], labels[n_train:])
+    plt.show()
 
-# 情景二、从多项式特征中选择前所有个维度（过拟合）
-# train(poly_features[:n_train, :], poly_features[n_train:, :],
-#       labels[:n_train], labels[n_train:], num_epochs=1500)
-# plt.show()
+elif scenario == 'underfit':
+    # 情景二、欠拟合：使用前2个维度的特征（对应1阶多项式，即线性模型）
+    # 模型过于简单，无法捕捉数据的真实规律
+    print("--- 训练一个欠拟合的模型 ---")
+    train(poly_features[:n_train, :2], poly_features[n_train:, :2],
+          labels[:n_train], labels[n_train:])
+    plt.show()
+
+elif scenario == 'overfit':
+    # 情景三、过拟合：使用所有50个维度的特征（对应49阶多项式）
+    # 模型过于复杂，会学习到训练数据中的噪声
+    print("--- 训练一个过拟合的模型 ---")
+    train(poly_features[:n_train, :], poly_features[n_train:, :],
+          labels[:n_train], labels[n_train:], num_epochs=1500)
+    plt.show()
+
+else:
+    print(f"错误: 未知的情景 '{scenario}'。请从 'normal', 'underfit', 'overfit' 中选择一个。")
 
