@@ -20,10 +20,11 @@ def train_concise(wd):
         param.data.normal_()
     loss = nn.MSELoss(reduction='none')
     num_epochs, lr = 100, 0.003
-    # 偏置参数没有衰减
+    # 只对权重w进行衰退操作，不对标量b衰减
     trainer = torch.optim.SGD([
         {"params": net[0].weight, 'weight_decay': wd},
-        {"params": net[0].bias}], lr=lr)
+        {"params": net[0].bias}],
+        lr=lr)
     animator = Animator(xlabel='epochs', ylabel='loss', yscale='log',
                         xlim=[5, num_epochs], legend=['train', 'test'])
     for epoch in range(num_epochs):
@@ -38,7 +39,7 @@ def train_concise(wd):
                           d2l.evaluate_loss(net, test_iter, loss)))
     print('w的L2范数是：', net[0].weight.norm().item())
 
-
-train_concise(0)
+# 配参数，0没有衰退，小数据集需要使用较大的weight_decay
+train_concise(10)
 plt.show()
 

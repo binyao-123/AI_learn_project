@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8f7d780-65dd-4038-9d4d-2a4071b3a059" name="Changes" comment="优化softmax注释和代码，优化train_epoch_ch3、train_ch3、predict_ch3函数">
-      <change afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V4_1_测试两层隐藏层.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V4_2_测试加十层隐藏层.py" afterDir="false" />
+    <list default="true" id="d8f7d780-65dd-4038-9d4d-2a4071b3a059" name="Changes" comment="1、优化softmax函数；&#10;2、优化dropout，裁剪数据集、更换优化器、重新设置神经元，增强对比效果；">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/AI_learn_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AI_learn_project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeeMu_deepLearning/V3_3_SoftMax.py" beforeDir="false" afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V3_3_SoftMax.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeeMu_deepLearning/V3_4_SoftMax简洁实现.py" beforeDir="false" afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V3_4_SoftMax简洁实现.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeeMu_deepLearning/V4_1_多层感知机从零实现.py" beforeDir="false" afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V4_1_多层感知机从零实现.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeeMu_deepLearning/V4_3_模型选择.py" beforeDir="false" afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V4_3_模型选择.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeeMu_deepLearning/V4_4_权重衰退.py" beforeDir="false" afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V4_4_权重衰退.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeeMu_deepLearning/V4_5_权重衰退简洁实现.py" beforeDir="false" afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V4_5_权重衰退简洁实现.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeeMu_deepLearning/V4_6_Dropout.py" beforeDir="false" afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V4_6_Dropout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeeMu_deepLearning/V4_7_预测房价.py" beforeDir="false" afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V4_7_预测房价.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeeMu_deepLearning/submission.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,11 +45,11 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/binyao-123/AI_learn_project.git&quot;,
-    &quot;accountId&quot;: &quot;ecdc760b-e075-4fe2-97e2-cee8e141414f&quot;
+    &quot;accountId&quot;: &quot;f68c52e8-296d-4a5c-bf44-394d83fcb482&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 7
+  &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="32o5IpwKgkVi7fmXtNNUrkUMvZ6" />
   <component name="ProjectLevelVcsManager">
@@ -58,8 +61,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.V1_0_数据操作.executor": "Run",
+    "Python.V1_1_数据预处理.executor": "Run",
+    "Python.V3_1_线性回归（重要）.executor": "Run",
+    "Python.V3_2_可视化图像数据集.executor": "Run",
     "Python.V3_3_SoftMax.executor": "Run",
     "Python.V3_4_SoftMax简洁实现.executor": "Run",
     "Python.V4_1_多层感知机从零实现.executor": "Run",
@@ -68,42 +75,26 @@
     "Python.V4_2_测试加十层隐藏层.executor": "Run",
     "Python.V4_3_模型选择.executor": "Run",
     "Python.V4_4_权重衰退.executor": "Run",
+    "Python.V4_5_权重衰退简洁实现.executor": "Run",
+    "Python.V4_6_Dropout.executor": "Run",
+    "Python.V4_7_预测房价.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "fileTemplates",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.splitter.proportion": "0.28429604",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.V4_3_模型选择">
-    <configuration name="V3_4_SoftMax简洁实现" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="AI_learn_project" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/LeeMu_deepLearning" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V3_4_SoftMax简洁实现.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.V4_7_预测房价">
     <configuration name="V4_1_测试两层隐藏层" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI_learn_project" />
       <option name="ENV_FILES" value="" />
@@ -196,21 +187,113 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="V4_4_权重衰退" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AI_learn_project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/LeeMu_deepLearning" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V4_4_权重衰退.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="V4_5_权重衰退简洁实现" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AI_learn_project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/LeeMu_deepLearning" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V4_5_权重衰退简洁实现.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="V4_6_Dropout" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AI_learn_project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/LeeMu_deepLearning" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V4_6_Dropout.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="V4_7_预测房价" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AI_learn_project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/LeeMu_deepLearning" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V4_7_预测房价.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.V4_7_预测房价" />
+        <item itemvalue="Python.V4_6_Dropout" />
+        <item itemvalue="Python.V4_5_权重衰退简洁实现" />
+        <item itemvalue="Python.V4_4_权重衰退" />
         <item itemvalue="Python.V4_3_模型选择" />
-        <item itemvalue="Python.V4_2_测试加十层隐藏层" />
-        <item itemvalue="Python.V3_4_SoftMax简洁实现" />
-        <item itemvalue="Python.V4_2_多层感知机简洁实现" />
-        <item itemvalue="Python.V4_1_测试两层隐藏层" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-PY-252.25557.178" />
-        <option value="bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PY-252.26830.99" />
+        <option value="bundled-python-sdk-164cda30dcd9-0af03a5fa574-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26830.99" />
       </set>
     </attachedChunks>
   </component>
@@ -231,6 +314,20 @@
       <workItem from="1758982689919" duration="5067000" />
       <workItem from="1759034940716" duration="23812000" />
       <workItem from="1759137250585" duration="17489000" />
+      <workItem from="1759813967009" duration="14000" />
+      <workItem from="1759813997344" duration="4066000" />
+      <workItem from="1759823494210" duration="1558000" />
+      <workItem from="1759830138411" duration="198000" />
+      <workItem from="1759830353370" duration="2049000" />
+      <workItem from="1759832424473" duration="187000" />
+      <workItem from="1759832693292" duration="228000" />
+      <workItem from="1759840725306" duration="106000" />
+      <workItem from="1759930612622" duration="671000" />
+      <workItem from="1760071857902" duration="29824000" />
+      <workItem from="1760270772895" duration="5617000" />
+      <workItem from="1760362110590" duration="2298000" />
+      <workItem from="1760365383861" duration="32000" />
+      <workItem from="1760412697377" duration="12592000" />
     </task>
     <task id="LOCAL-00001" summary="优化softmax注释和代码，优化train_epoch_ch3、train_ch3、predict_ch3函数">
       <option name="closed" value="true" />
@@ -271,15 +368,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="优化softmax注释和代码，优化train_epoch_ch3、train_ch3、predict_ch3函数" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化softmax注释和代码，优化train_epoch_ch3、train_ch3、predict_ch3函数" />
+    <MESSAGE value="1、优化softmax函数；&#10;2、优化dropout，裁剪数据集、更换优化器、重新设置神经元，增强对比效果；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、优化softmax函数；&#10;2、优化dropout，裁剪数据集、更换优化器、重新设置神经元，增强对比效果；" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AI_learn_project$V3_3_SoftMax.coverage" NAME="V3_3_SoftMax Coverage Results" MODIFIED="1758870677449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
-    <SUITE FILE_PATH="coverage/AI_learn_project$V4_2_.coverage" NAME="V4_2_测试加十层隐藏层 Coverage Results" MODIFIED="1759227451531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
-    <SUITE FILE_PATH="coverage/AI_learn_project$V1_0_.coverage" NAME="V1_0_数据操作 Coverage Results" MODIFIED="1758875792743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
-    <SUITE FILE_PATH="coverage/AI_learn_project$V4_3_.coverage" NAME="V4_3_模型选择 Coverage Results" MODIFIED="1759318296731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
-    <SUITE FILE_PATH="coverage/AI_learn_project$V4_1_.coverage" NAME="V4_1_测试两层隐藏层 Coverage Results" MODIFIED="1759138469498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
-    <SUITE FILE_PATH="coverage/AI_learn_project$V3_4_SoftMax.coverage" NAME="V3_4_SoftMax简洁实现 Coverage Results" MODIFIED="1759227341009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
-    <SUITE FILE_PATH="coverage/AI_learn_project$V4_4_.coverage" NAME="V4_4_权重衰退 Coverage Results" MODIFIED="1758074302055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V3_3_SoftMax.coverage" NAME="V3_3_SoftMax 覆盖结果" MODIFIED="1759824358234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V1_0_.coverage" NAME="V1_0_数据操作 覆盖结果" MODIFIED="1759815061036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V3_1_.coverage" NAME="V3_1_线性回归（重要） 覆盖结果" MODIFIED="1759824291233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V4_1_.coverage" NAME="V4_1_测试两层隐藏层 覆盖结果" MODIFIED="1759824799626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V3_2_.coverage" NAME="V3_2_可视化图像数据集 覆盖结果" MODIFIED="1759824304698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V3_4_SoftMax.coverage" NAME="V3_4_SoftMax简洁实现 覆盖结果" MODIFIED="1759824548969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V4_7_.coverage" NAME="V4_7_预测房价 Coverage Results" MODIFIED="1760440492702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V4_2_.coverage" NAME="V4_2_测试加十层隐藏层 覆盖结果" MODIFIED="1759824919625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V4_3_.coverage" NAME="V4_3_模型选择 Coverage Results" MODIFIED="1759832542338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V4_6_Dropout.coverage" NAME="V4_6_Dropout Coverage Results" MODIFIED="1760276308652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V4_5_.coverage" NAME="V4_5_权重衰退简洁实现 Coverage Results" MODIFIED="1760103077083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V1_1_.coverage" NAME="V1_1_数据预处理 覆盖结果" MODIFIED="1759815071421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V4_4_.coverage" NAME="V4_4_权重衰退 Coverage Results" MODIFIED="1760094948494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
   </component>
 </project>

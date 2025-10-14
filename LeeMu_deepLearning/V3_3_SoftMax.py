@@ -90,7 +90,7 @@ def train_epoch_ch3(net, train_iter, loss, updater):
             # l 是一个标量 (reduction='mean' 的情况) 乘以批次大小来还原批次总损失
             batch_loss_sum = l * y.numel()
 
-        metric.add(float(batch_loss_sum), accuracy(y_hat, y), y.numel())
+        metric.add(float(batch_loss_sum.item()), accuracy(y_hat, y), y.numel())
 
     # 返回训练损失和训练精度
     return metric[0] / metric[2], metric[1] / metric[2]
@@ -147,6 +147,7 @@ def train_ch3(net, train_iter, test_iter, loss, num_epochs, updater):
         test_acc = evaluate_accuracy(net, test_iter)
         animator.add(epoch + 1, train_metrics + (test_acc,))
     train_loss, train_acc = train_metrics
+    # 断言函数保护机制
     assert train_loss < 0.5, train_loss
     assert 1 >= train_acc > 0.7, train_acc
     assert 1 >= test_acc > 0.7, test_acc

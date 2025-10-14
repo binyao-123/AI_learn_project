@@ -21,7 +21,7 @@ DATA_URL = 'http://d2l-data.s3-accelerate.amazonaws.com/'
 
 
 def download(name, cache_dir=os.path.join('../../PythonProject', 'data')):
-    """下载一个DATA_HUB中的文件，返回本地文件名"""
+    """下载DATA_HUB中的一个文件，返回本地文件名"""
     assert name in DATA_HUB, f"{name} 不存在于 {DATA_HUB}"
     url, sha1_hash = DATA_HUB[name]
     os.makedirs(cache_dir, exist_ok=True)
@@ -72,8 +72,8 @@ DATA_HUB['kaggle_house_test'] = (
 
 train_data = pd.read_csv(download('kaggle_house_train'))
 test_data = pd.read_csv(download('kaggle_house_test'))
-# print(train_data.shape)   #(1460, 81)
-# print(test_data.shape)    #(1459, 80)
+print(train_data.shape)   # train_data张量形状(1460, 81)
+print(test_data.shape)    # test_data张量形状(1459, 80)
 '''
 Id：           每个房屋样本的唯一标识符。
 MSSubClass：   建筑分类，表示房屋的类型。
@@ -89,7 +89,7 @@ print(train_data.iloc[0:4, [0, 1, 2, 3, -3, -2, -1]])
 all_features = pd.concat((train_data.iloc[:, 1:-1], test_data.iloc[:, 1:]))
 
 # 2.处理缺失的值
-# 具体操作，对于每一列的数值，归一化成总体的均值为 0，方差为 1.
+# 对于数值类型的列，归一化成总体的均值为 0，方差为 1.
 numeric_features = all_features.dtypes[all_features.dtypes != 'object'].index
 all_features[numeric_features] = all_features[numeric_features].apply(
     lambda x: (x - x.mean()) / (x.std()))
@@ -97,30 +97,32 @@ all_features[numeric_features] = all_features[numeric_features].apply(
 # 归一化数据之后，就可以将缺失值设置为 0
 all_features[numeric_features] = all_features[numeric_features].fillna(0)
 
-# get_dummies函数对字符串类型数据进行计数（独热编码），在 V1_1中有介绍
+# 对于字符串类型的列，使用get_dummies函数计数（独热编码），在 V1_1中有介绍
 # 此转换会将特征的总数量从79个增加到 330个
 all_features = pd.get_dummies(all_features, dummy_na=True, dtype=int)
 
-# 通过values属性，可以从pandas格式中提取NumPy格式，并将其转换为张量表示用于训练
+# values方法提取用于训练的张量
 n_train = train_data.shape[0]
 train_features = torch.tensor(all_features[:n_train].values, dtype=torch.float32)
 test_features = torch.tensor(all_features[n_train:].values, dtype=torch.float32)
 train_labels = torch.tensor(
     train_data.SalePrice.values.reshape(-1, 1), dtype=torch.float32)
+print("打印train_labels的前5个数据：")
+print(train_labels[0:5])
+print("train_labels 的形状:", train_labels.shape)
 
 # 训练
 loss = nn.MSELoss()
 in_features = train_features.shape[1]
-
 
 # 用一个单层的神经网络试着跑一下，如果不能比随机猜测更好，那很可能存在数据处理错误
 def get_net():
     net = nn.Sequential(nn.Linear(in_features, 1))
     return net
 
+# 对数均方根误差
 def log_rmse(net, features, labels):
-    # 为了在取对数时进一步稳定该值，将小于1的值设置为1
-    clipped_preds = torch.clamp(net(features), 1, float('inf'))
+    clipped_preds = torch.clamp(net(features), 1, float('inf')) #为了在取对数时进一步稳定该值，将小于 1的值置为 1
     rmse = torch.sqrt(loss(torch.log(clipped_preds),
                            torch.log(labels)))
     return rmse.item()
@@ -129,7 +131,6 @@ def train(net, train_features, train_labels, test_features, test_labels,
           num_epochs, learning_rate, weight_decay, batch_size):
     train_ls, test_ls = [], []
     train_iter = d2l.load_array((train_features, train_labels), batch_size)
-    # 使用 Adam优化算法
     optimizer = torch.optim.Adam(net.parameters(),
                                  lr=learning_rate,
                                  weight_decay=weight_decay)
@@ -146,8 +147,8 @@ def train(net, train_features, train_labels, test_features, test_labels,
 
 # k折交叉验证
 def get_k_fold_data(k, i, X, y):
-    assert k > 1
-    fold_size = X.shape[0] // k
+    assert k > 1, k
+    fold_size = X.shape[0] // k     # //是整除
     X_train, y_train = None, None
     for j in range(k):
         idx = slice(j * fold_size, (j + 1) * fold_size)
@@ -182,13 +183,14 @@ def k_fold(k, X_train, y_train, num_epochs, learning_rate, weight_decay,
 
 
 k, num_epochs, lr, weight_decay, batch_size = 5, 100, 5, 0, 64
+# 调用 k_fold评估当前的超参数（k=5, lr=5, weight_decay=0等等）表现如何。
 train_l, valid_l = k_fold(k, train_features, train_labels, num_epochs, lr,
                           weight_decay, batch_size)
 print(f'{k}-折验证: 平均训练log rmse: {float(train_l):f}, '
       f'平均验证log rmse: {float(valid_l):f}')
 
 
-# 提交 Kaggle预测
+# 生成预测文件
 def train_and_pred(train_features, test_features, train_labels, test_data,
                    num_epochs, lr, weight_decay, batch_size):
     net = get_net()
@@ -199,12 +201,12 @@ def train_and_pred(train_features, test_features, train_labels, test_data,
     print(f'训练log rmse：{float(train_ls[-1]):f}')
     # 将网络应用于测试集
     preds = net(test_features).detach().numpy()
-    # 将其重新格式化以导出到 Kaggle
+    # 将其重新格式化以导出到 Kaggle 格式
     test_data['SalePrice'] = pd.Series(preds.reshape(1, -1)[0])
     submission = pd.concat([test_data['Id'], test_data['SalePrice']], axis=1)
-    submission.to_csv('submission.csv', index=False)
-
+    submission.to_csv('../output/submission.csv', index=False)
 
 train_and_pred(train_features, test_features, train_labels, test_data,
                num_epochs, lr, weight_decay, batch_size)
+plt.tight_layout()  # 为标签元素预留足够的边距
 plt.show()
