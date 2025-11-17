@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8f7d780-65dd-4038-9d4d-2a4071b3a059" name="Changes" comment="RNN神经网络部分代码，优化部分函数，减少对d2l库的依赖">
-      <change afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V7_7_LSTM.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V7_8_深度RNN.py" afterDir="false" />
+    <list default="true" id="d8f7d780-65dd-4038-9d4d-2a4071b3a059" name="Changes" comment="完成RNN代码提交">
+      <change afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V7_9_seq2seq.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V8_1_Nadaraya_Watson.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V8_2_注意力评分函数.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V8_3_Transformer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeeMu_deepLearning/V7_1_马尔科夫链序列模型.py" beforeDir="false" afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V7_1_马尔科夫链序列模型.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeeMu_deepLearning/V7_6_GRU.py" beforeDir="false" afterPath="$PROJECT_DIR$/LeeMu_deepLearning/V7_6_GRU.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,67 +54,72 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.V1_0_数据操作.executor": "Run",
-    "Python.V1_1_数据预处理.executor": "Run",
-    "Python.V3_1_线性回归（重要）.executor": "Run",
-    "Python.V3_2_可视化图像数据集.executor": "Run",
-    "Python.V3_3_SoftMax.executor": "Run",
-    "Python.V3_4_SoftMax简洁实现.executor": "Run",
-    "Python.V4_1_多层感知机从零实现.executor": "Run",
-    "Python.V4_1_测试两层隐藏层.executor": "Run",
-    "Python.V4_2_多层感知机简洁实现.executor": "Run",
-    "Python.V4_2_测试加十层隐藏层.executor": "Run",
-    "Python.V4_3_模型选择.executor": "Run",
-    "Python.V4_4_权重衰退.executor": "Run",
-    "Python.V4_5_权重衰退简洁实现.executor": "Run",
-    "Python.V4_6_Dropout.executor": "Run",
-    "Python.V4_7_预测房价.executor": "Run",
-    "Python.V6_1_cnn (1).executor": "Run",
-    "Python.V6_1_卷积神经网络.executor": "Run",
-    "Python.V6_2_LeNet (1).executor": "Run",
-    "Python.V6_2_手写数字识别网络LeNet.executor": "Run",
-    "Python.V6_3_AlexNet.executor": "Run",
-    "Python.V6_4_SSVGG!.executor": "Run",
-    "Python.V6_5_NiN.executor": "Run",
-    "Python.V6_6_GooleNet.executor": "Run",
-    "Python.V6_7_批量规范化.executor": "Run",
-    "Python.V6_8_ResNet.executor": "Run",
-    "Python.V7_1_RNN.executor": "Run",
-    "Python.V7_2_文本预处理.executor": "Run",
-    "Python.V7_3_NLP (1).executor": "Run",
-    "Python.V7_3_自然语言处理.executor": "Run",
-    "Python.V7_4_RNN.executor": "Run",
-    "Python.V7_5_RNN_Simple.executor": "Run",
-    "Python.V7_6_GRU.executor": "Run",
-    "Python.V7_7_LSTM.executor": "Run",
-    "Python.V7_8_深度RNN.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
-    "WebServerToolWindowPanel.toolwindow.show.date": "true",
-    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
-    "WebServerToolWindowPanel.toolwindow.show.size": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "fileTemplates",
-    "settings.editor.splitter.proportion": "0.28429604",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.V1_0_数据操作.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V1_1_数据预处理.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V3_1_线性回归（重要）.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V3_2_可视化图像数据集.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V3_3_SoftMax.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V3_4_SoftMax简洁实现.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V4_1_多层感知机从零实现.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V4_1_测试两层隐藏层.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V4_2_多层感知机简洁实现.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V4_2_测试加十层隐藏层.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V4_3_模型选择.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V4_4_权重衰退.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V4_5_权重衰退简洁实现.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V4_6_Dropout.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V4_7_预测房价.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V6_1_cnn (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.V6_1_卷积神经网络.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V6_2_LeNet (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.V6_2_手写数字识别网络LeNet.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V6_3_AlexNet.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V6_4_SSVGG!.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V6_5_NiN.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V6_6_GooleNet.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V6_7_批量规范化.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V6_8_ResNet.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V7_1_RNN.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V7_2_文本预处理.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V7_3_NLP (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.V7_3_自然语言处理.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V7_4_RNN.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V7_5_RNN_Simple.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V7_6_GRU.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V7_7_LSTM.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V7_8_深度RNN.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V7_9_seq2seq.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V8_1_Nadaraya_Watson (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.V8_1_注意力提示.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V8_2_注意力评分函数.executor&quot;: &quot;Run&quot;,
+    &quot;Python.V8_3_Transformer.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.28429604&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Python.V7_8_深度RNN">
-    <configuration name="V7_4_RNN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RunManager" selected="Python.V8_3_Transformer">
+    <configuration name="V7_9_seq2seq" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI_learn_project" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -128,7 +133,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V7_4_RNN.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V7_9_seq2seq.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -137,7 +142,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="V7_5_RNN_Simple" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="V8_1_Nadaraya_Watson (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI_learn_project" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -151,7 +156,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V7_5_RNN_Simple.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V8_1_Nadaraya_Watson.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -160,7 +165,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="V7_6_GRU" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="V8_1_Nadaraya_Watson" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI_learn_project" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -174,7 +179,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V7_6_GRU.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\12622\PycharmProjects\AI_learn_project\LeeMu_deepLearning\V8_1_Nadaraya_Watson.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -183,7 +188,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="V7_7_LSTM" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="V8_2_注意力评分函数" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI_learn_project" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -197,7 +202,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V7_7_LSTM.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V8_2_注意力评分函数.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -206,7 +211,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="V7_8_深度RNN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="V8_3_Transformer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI_learn_project" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -220,7 +225,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V7_8_深度RNN.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LeeMu_deepLearning/V8_3_Transformer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -231,11 +236,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.V7_8_深度RNN" />
-        <item itemvalue="Python.V7_7_LSTM" />
-        <item itemvalue="Python.V7_6_GRU" />
-        <item itemvalue="Python.V7_5_RNN_Simple" />
-        <item itemvalue="Python.V7_4_RNN" />
+        <item itemvalue="Python.V8_3_Transformer" />
+        <item itemvalue="Python.V7_9_seq2seq" />
+        <item itemvalue="Python.V8_2_注意力评分函数" />
+        <item itemvalue="Python.V8_1_Nadaraya_Watson (1)" />
+        <item itemvalue="Python.V8_1_Nadaraya_Watson" />
       </list>
     </recent_temporary>
   </component>
@@ -300,7 +305,11 @@
       <workItem from="1762061450077" duration="9046000" />
       <workItem from="1762154539589" duration="10000" />
       <workItem from="1762927294058" duration="5928000" />
-      <workItem from="1763019436895" duration="2671000" />
+      <workItem from="1763019436895" duration="2785000" />
+      <workItem from="1763042677813" duration="6025000" />
+      <workItem from="1763107768288" duration="4016000" />
+      <workItem from="1763276977512" duration="2514000" />
+      <workItem from="1763309246648" duration="10672000" />
     </task>
     <task id="LOCAL-00001" summary="优化softmax注释和代码，优化train_epoch_ch3、train_ch3、predict_ch3函数">
       <option name="closed" value="true" />
@@ -334,7 +343,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762074923552</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="完成RNN代码提交">
+      <option name="closed" value="true" />
+      <created>1763025743581</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1763025743581</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,16 +385,18 @@
     <MESSAGE value="1、优化softmax函数；&#10;2、优化dropout，裁剪数据集、更换优化器、重新设置神经元，增强对比效果；" />
     <MESSAGE value="CNN卷积神经网络代码" />
     <MESSAGE value="RNN神经网络部分代码，优化部分函数，减少对d2l库的依赖" />
-    <option name="LAST_COMMIT_MESSAGE" value="RNN神经网络部分代码，优化部分函数，减少对d2l库的依赖" />
+    <MESSAGE value="完成RNN代码提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成RNN代码提交" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/AI_learn_project$V3_3_SoftMax.coverage" NAME="V3_3_SoftMax 覆盖结果" MODIFIED="1759824358234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V8_1_Nadaraya_Watson__1_.coverage" NAME="V8_1_Nadaraya_Watson (1) Coverage Results" MODIFIED="1763050336366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V3_1_.coverage" NAME="V3_1_线性回归（重要） 覆盖结果" MODIFIED="1759824291233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V7_5_RNN_Simple.coverage" NAME="V7_5_RNN_Simple Coverage Results" MODIFIED="1762064269157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V7_7_LSTM.coverage" NAME="V7_7_LSTM Coverage Results" MODIFIED="1762932427915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V4_1_.coverage" NAME="V4_1_测试两层隐藏层 覆盖结果" MODIFIED="1759824799626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
-    <SUITE FILE_PATH="coverage/AI_learn_project$V6_1_cnn__1_.coverage" NAME="V6_1_cnn (1) Coverage Results" MODIFIED="1761120456477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V3_4_SoftMax.coverage" NAME="V3_4_SoftMax简洁实现 覆盖结果" MODIFIED="1759824548969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V6_1_cnn__1_.coverage" NAME="V6_1_cnn (1) Coverage Results" MODIFIED="1761120456477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V6_1_.coverage" NAME="V6_1_卷积神经网络 Coverage Results" MODIFIED="1760873102784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V6_5_NiN.coverage" NAME="V6_5_NiN Coverage Results" MODIFIED="1761396451429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V6_4_SSVGG_.coverage" NAME="V6_4_SSVGG! Coverage Results" MODIFIED="1761317122773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
@@ -386,11 +405,14 @@
     <SUITE FILE_PATH="coverage/AI_learn_project$V4_3_.coverage" NAME="V4_3_模型选择 Coverage Results" MODIFIED="1759832542338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V7_3_.coverage" NAME="V7_3_自然语言处理 Coverage Results" MODIFIED="1761992317086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V4_5_.coverage" NAME="V4_5_权重衰退简洁实现 Coverage Results" MODIFIED="1760103077083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V8_1_.coverage" NAME="V8_1_注意力提示 Coverage Results" MODIFIED="1763042890426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V6_2_LeNet.coverage" NAME="V6_2_手写数字识别网络LeNet Coverage Results" MODIFIED="1761199053891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V1_0_.coverage" NAME="V1_0_数据操作 覆盖结果" MODIFIED="1759815061036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V6_7_.coverage" NAME="V6_7_批量规范化 Coverage Results" MODIFIED="1761576790329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V7_3_NLP__1_.coverage" NAME="V7_3_NLP (1) Coverage Results" MODIFIED="1762010978409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V7_9_seq2seq.coverage" NAME="V7_9_seq2seq Coverage Results" MODIFIED="1763351424459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V6_6_GooleNet.coverage" NAME="V6_6_GooleNet Coverage Results" MODIFIED="1761396431763" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V8_3_Transformer.coverage" NAME="V8_3_Transformer Coverage Results" MODIFIED="1763353870379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V3_2_.coverage" NAME="V3_2_可视化图像数据集 覆盖结果" MODIFIED="1759824304698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V4_7_.coverage" NAME="V4_7_预测房价 Coverage Results" MODIFIED="1760440492702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V7_4_RNN.coverage" NAME="V7_4_RNN Coverage Results" MODIFIED="1762013175874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
@@ -399,6 +421,7 @@
     <SUITE FILE_PATH="coverage/AI_learn_project$V4_6_Dropout.coverage" NAME="V4_6_Dropout Coverage Results" MODIFIED="1761313302583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V6_3_AlexNet.coverage" NAME="V6_3_AlexNet Coverage Results" MODIFIED="1761313864038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V6_2_LeNet__1_.coverage" NAME="V6_2_LeNet (1) Coverage Results" MODIFIED="1761313876553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
+    <SUITE FILE_PATH="coverage/AI_learn_project$V8_2_.coverage" NAME="V8_2_注意力评分函数 Coverage Results" MODIFIED="1763109126456" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V1_1_.coverage" NAME="V1_1_数据预处理 覆盖结果" MODIFIED="1759815071421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V7_2_.coverage" NAME="V7_2_文本预处理 Coverage Results" MODIFIED="1761990533165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
     <SUITE FILE_PATH="coverage/AI_learn_project$V7_8_RNN.coverage" NAME="V7_8_深度RNN Coverage Results" MODIFIED="1763024592168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeMu_deepLearning" />
